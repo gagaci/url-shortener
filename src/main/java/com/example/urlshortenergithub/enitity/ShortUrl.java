@@ -1,15 +1,17 @@
 package com.example.urlshortenergithub.enitity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+
 import static jakarta.persistence.GenerationType.SEQUENCE;
 
 @Entity(name = "UrlShortener")
 @Table(name = "url_shortener")
 @Getter
 @Setter
-public class UrlShortener {
+@Builder
+@AllArgsConstructor
+public class ShortUrl {
     @Id
     @SequenceGenerator(
             name = "url_sequence",
@@ -38,12 +40,12 @@ public class UrlShortener {
             unique = true)
     private String code;
 
-    public UrlShortener(String url, String code) {
+    public ShortUrl(String url, String code) {
         this.url = url;
         this.code = code;
     }
 
-    public UrlShortener() {
+    public ShortUrl() {
 
     }
 }
